@@ -4,6 +4,10 @@ import styled from "styled-components";
 const Section = styled.div`
   display: flex;
   justify-content: center;
+
+  @media only screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const Container = styled.div`
@@ -12,6 +16,11 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 10px 0px;
+
+  @media only screen and (max-width: 768px) {
+    width: 100%;
+    padding: 10px;
+  }
 `;
 
 const Links = styled.div`
@@ -28,10 +37,20 @@ const List = styled.ul`
   display: flex;
   gap: 20px;
   list-style: none;
+
+  @media only screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const ListItem = styled.li`
   cursor: pointer;
+`;
+
+const Icons = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 20px;
 `;
 
 const Icon = styled.img`
@@ -49,13 +68,7 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const Icons = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 20px;
-`;
-
-function Navbar() {
+const Navbar = () => {
   return (
     <Section>
       <Container>
@@ -69,12 +82,13 @@ function Navbar() {
           </List>
         </Links>
         <Icons>
-          <Icon src="./img/search.png/" />
+          {/* Changed the image due to copyright problems */}
+          <Icon src="./img/search.png" />
           <Button>Hire Now</Button>
         </Icons>
       </Container>
     </Section>
   );
-}
+};
 
 export default Navbar;
