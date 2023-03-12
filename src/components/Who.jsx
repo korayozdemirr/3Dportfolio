@@ -1,5 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import { OrbitControls } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
+import Cube from "./Cube";
 
 const Section = styled.div`
   height: 100vh;
@@ -16,7 +19,6 @@ const Container = styled.div`
 `;
 const Left = styled.div`
   flex: 1;
-  
 `;
 const Title = styled.h1`
   font-size: 74px;
@@ -59,7 +61,12 @@ function Who() {
     <Section>
       <Container>
         <Left>
-          
+          <Canvas camera={{fov:25, position:[5,5,5]}}>
+            <OrbitControls autoRotate enableZoom={false} />
+            <ambientLight intensity={1} />
+            <directionalLight position={[3, 2, 1]} />
+            <Cube />
+          </Canvas>
         </Left>
         <Right>
           <Title>Think outside the square space</Title>
@@ -68,7 +75,8 @@ function Who() {
             <Subtitle>What we Do</Subtitle>
           </WhatWeDo>
           <Desc>
-            a creative group of designers and developers with a passion for the arts.
+            a creative group of designers and developers with a passion for the
+            arts.
           </Desc>
           <Button>See out works</Button>
         </Right>

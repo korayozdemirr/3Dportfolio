@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import Navbar from "./Navbar";
-
+import { MeshDistortMaterial, OrbitControls, Sphere } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
 const Section = styled.div`
   height: 100vh;
   scroll-snap-align: center;
@@ -37,10 +38,9 @@ const Line = styled.img`
 `;
 const Subtitle = styled.h2`
   color: #da4ea2;
-
 `;
 const Desc = styled.p`
- font-size: 24px;
+  font-size: 24px;
 `;
 const Button = styled.button`
   background-color: #da4ea2;
@@ -62,16 +62,16 @@ const Img = styled.img`
   height: 600px;
   object-fit: contain;
   position: absolute;
-  top:0;
-  bottom:0;
-  left:0;
-  right:0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   margin: auto;
   animation: animate 2s infinite ease alternate;
 
   @keyframes animate {
-    to{
-      transform:translateY(20px)
+    to {
+      transform: translateY(20px);
     }
   }
 `;
@@ -93,6 +93,19 @@ function Hero() {
           <Button>Learn More</Button>
         </Left>
         <Right>
+          <Canvas>
+            <OrbitControls autoRotate enableZoom={false} />
+            <ambientLight intensity={1} />
+            <directionalLight position={[3, 2, 1]} />
+            <Sphere args={[1, 100, 200]} scale={1.7}>
+              <MeshDistortMaterial
+                color="#7128c4"
+                attach="material"
+                distort={0.5}
+                speed={2}
+              />
+            </Sphere>
+          </Canvas>
           <Img src="./img/moon.png" />
         </Right>
       </Container>
